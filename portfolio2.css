@@ -1170,3 +1170,158 @@ body.dark-mode .intro-screen{
         line-height:1.3;
     }
 }
+
+/* FINAL MOBILE FIXES */
+@media(max-width:768px){
+    /* Reset carousel playback to the same positioning model as desktop */
+    .work-category .inner-carousel{
+        position:relative;
+        display:block;
+        width:100%;
+        height:auto;
+        overflow:hidden;
+    }
+
+    .work-category .inner-track{
+        position:relative;
+        top:auto;
+        left:auto;
+        width:100%;
+        height:auto;
+        aspect-ratio:4/3;
+        overflow:hidden;
+    }
+
+    .work-category .work-slide{
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0;
+    }
+
+    .work-category .work-slide:not(.active){
+        display:none;
+    }
+
+    .work-category .work-slide.active{
+        display:block;
+    }
+
+    .work-category .work-media{
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+    }
+
+    .work-category .work-media iframe{
+        position:absolute;
+        inset:0;
+        width:100% !important;
+        height:100% !important;
+        min-width:0 !important;
+        min-height:0 !important;
+        max-width:none !important;
+        max-height:none !important;
+        margin:0;
+        padding:0;
+        border:0;
+        display:block;
+    }
+
+    /* Keep custom carousel controls out of the Drive player controls */
+    .work-category .inner-controls{
+        position:absolute;
+        top:0;
+        left:0;
+        right:0;
+        height:100%;
+        padding:0 .45rem;
+        margin:0;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        pointer-events:none;
+        z-index:4;
+    }
+
+    .work-category .inner-btn{
+        pointer-events:auto;
+        flex:0 0 auto;
+    }
+
+    .work-category .inner-indicators{
+        position:absolute;
+        top:.55rem;
+        left:50%;
+        z-index:5;
+        transform:translateX(-50%);
+    }
+
+    .work-category .work-info{
+        position:relative;
+        width:100%;
+        height:auto;
+        min-height:0;
+        margin:0;
+        padding:.6rem .35rem .35rem;
+    }
+
+    /* Skills: keep the 2x2 grid and keep logos inside each card */
+    .skills-grid{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        grid-template-rows:auto auto;
+        width:100%;
+        height:auto;
+    }
+
+    .skill-card{
+        min-width:0;
+        min-height:250px;
+        height:auto;
+        display:flex;
+        flex-direction:column;
+        padding:1.25rem;
+        box-sizing:border-box;
+    }
+
+    .skill-card > div{
+        display:flex;
+        flex-direction:column;
+        min-width:0;
+        height:100%;
+    }
+
+    .skill-card h3{
+        margin-bottom:.9rem;
+    }
+
+    .skill-card p{
+        margin-bottom:1rem;
+    }
+
+    .skill-tools{
+        display:flex;
+        align-items:center;
+        gap:.7rem;
+        margin-top:auto;
+        padding-top:.75rem;
+        min-height:48px;
+        position:relative;
+        z-index:2;
+    }
+
+    .skill-tools img{
+        width:40px;
+        height:40px;
+        object-fit:contain;
+        display:block;
+        flex:0 0 40px;
+    }
+}
