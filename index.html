@@ -18,130 +18,102 @@
     height:auto;
 }
 
+.work-category .inner-carousel{
+    width:100%;
+    height:auto;
+}
+
 .work-category .inner-track{
     width:100%;
-    aspect-ratio:16/9;
+    height:auto;
+    aspect-ratio:4/3;
     position:relative;
+    overflow:hidden;
+}
+
+.work-category .work-slide{
+    width:100%;
+    height:100%;
+}
+
+.work-category .work-media{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+.work-category .work-media iframe{
+    display:block;
+    width:100% !important;
+    height:100% !important;
+    aspect-ratio:4/3;
+    border:0;
+}
+
+.work-category .work-media img{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
 }
 
 @media(max-width:768px){
     .work-category{
         width:88%;
         height:auto;
-        aspect-ratio:auto;
         padding:.75rem;
-        overflow:hidden;
-    }
-
-    .work-category .category-content{
-        width:100%;
-        height:auto;
-    }
-
-    .work-category .inner-carousel{
-        width:100%;
-        height:auto;
-        position:relative;
-        display:block;
-        overflow:hidden;
+        box-sizing:border-box;
     }
 
     .work-category .inner-track{
         width:100%;
         height:auto;
-        position:relative;
-        aspect-ratio:var(--media-ratio,16/9);
-        overflow:hidden;
-    }
-
-    .work-category .work-slide{
-        position:absolute;
-        inset:0;
-        width:100%;
-        height:100%;
-        margin:0;
-        padding:0;
-        overflow:hidden;
-    }
-
-    .work-category .work-slide:not(.active){
-        display:none;
-    }
-
-    .work-category .work-slide.active{
-        display:block;
-    }
-
-    .work-category .work-media{
-        position:absolute;
-        inset:0;
-        width:100%;
-        height:100%;
-        margin:0;
-        padding:0;
-        overflow:hidden;
+        aspect-ratio:4/3;
     }
 
     .work-category .work-media iframe{
-        position:absolute;
-        inset:0;
         width:100% !important;
         height:100% !important;
-        min-width:0 !important;
-        min-height:0 !important;
-        max-width:none !important;
-        max-height:none !important;
-        margin:0;
-        padding:0;
-        border:0;
-        display:block;
+        aspect-ratio:4/3;
     }
 
-    .work-category .work-media img{
+    .work-category .inner-controls{
         position:absolute;
         inset:0;
         width:100%;
         height:100%;
-        margin:0;
-        padding:0;
-        object-fit:contain;
+        padding:0 .45rem;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        box-sizing:border-box;
+        pointer-events:none;
+        z-index:10;
+    }
+
+    .work-category .inner-btn{
+        pointer-events:auto;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        flex:0 0 auto;
     }
 
     .work-category .inner-indicators{
         position:absolute;
         top:.55rem;
         left:50%;
-        z-index:5;
         transform:translateX(-50%);
-    }
-
-    .work-category .inner-controls{
-        position:absolute;
-        inset:0;
-        z-index:6;
-        width:100%;
-        height:100%;
-        margin:0;
-        padding:0 .45rem;
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        pointer-events:none;
-    }
-
-    .work-category .inner-btn{
-        pointer-events:auto;
-        flex:0 0 auto;
+        z-index:11;
     }
 
     .work-category .work-info{
         position:relative;
-        inset:auto;
         width:100%;
         height:auto;
-        min-height:0;
         margin:0;
         padding:.6rem .35rem .2rem;
+        box-sizing:border-box;
     }
 }</style>
 <style>
@@ -494,21 +466,7 @@ return i;
 
 function updateCarouselRatio(c){
  if(!c)return;
- const active=c.querySelector(".work-slide.active");
- const media=active?.querySelector(".work-media");
- const iframe=media?.querySelector("iframe");
- const image=media?.querySelector("img");
- if(iframe){
-  const w=parseFloat(iframe.getAttribute("width"))||16;
-  const h=parseFloat(iframe.getAttribute("height"))||9;
-  c.style.setProperty("--media-ratio",w/h);
- }else if(image){
-  const set=()=>{
-   if(image.naturalWidth&&image.naturalHeight)c.style.setProperty("--media-ratio",image.naturalWidth/image.naturalHeight);
-  };
-  if(image.complete)set();
-  else image.addEventListener("load",set,{once:true});
- }
+ c.style.setProperty("--media-ratio",4/3);
 }
 
 function updateCarousel(c,n){
