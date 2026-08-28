@@ -664,28 +664,5 @@ typeRole();
 
 
 </script>
-
-<script>
-document.querySelectorAll(".work-category").forEach(card=>{
- const track=card.querySelector(".inner-track");
- if(!track)return;
- const slides=[...track.querySelectorAll(".work-slide")];
- if(!slides.length)return;
- const setRatio=()=>{
-  const active=slides.find(s=>s.classList.contains("active"))||slides[0];
-  const frame=active.querySelector("iframe,video,img");
-  if(!frame)return;
-  let w=parseFloat(frame.getAttribute("width"));
-  let h=parseFloat(frame.getAttribute("height"));
-  if(!w||!h){
-   w=frame.naturalWidth||frame.videoWidth;
-   h=frame.naturalHeight||frame.videoHeight;
-  }
-  if(w&&h) track.style.setProperty("--mobile-ratio",w/h);
- };
- setRatio();
-});
-</script>
-
 </body>
 </html> 
